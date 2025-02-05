@@ -168,7 +168,10 @@ namespace Test
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * from UserTickets where UserId = @userId"
+                using (SqlCommand cmd = new SqlCommand("Select match.GameDate, match.HomeTeam, match.GuestTeam, uticket.TicketNumber from " +
+                    "UserTickets as uticket " +
+                    "Join Matches as match on uticket.MatchId = match.Id " +
+                    "where uticket.UserId = @userId"
                     , conn))
                 {
                     cmd.Parameters.AddWithValue("@userId", Convert.ToInt16(Login.instance.userId));

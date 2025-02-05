@@ -88,23 +88,40 @@ namespace Test.Models
         // Zakładka 'Zaplanuj mecz'
         public void CreateMatch(string homeTeam, string guestTeamm, DateTime dateTime, string typeOfEvent)
         {
-            match.HomeTeam = textCreateMatchHomeTeam.Text;
-            match.GuestTeam = textCreateMatchGuestTeam.Text;
-            match.GameDate = dateTimeCreateMatch.Value.Date + dateTimeCreateMatchTime.Value.TimeOfDay;
-            match.TypeOfEvent = textCreateMatchTypeOfEvent.Text;
-           
+            Match findSameMatch = db.Match
+                .Where(x => x.HomeTeam == homeTeam)
+                .Where(x => x.GuestTeam == guestTeamm)
+                .Where(x => x.GameDate == dateTime).SingleOrDefault();
+            
 
-            db.Match.Add(match);
-
-            int a = db.SaveChanges();
-            if (a > 0)
+            if (findSameMatch == null)
             {
-                MessageBox.Show("You created a match");
+                match.HomeTeam = textCreateMatchHomeTeam.Text;
+                match.GuestTeam = textCreateMatchGuestTeam.Text;
+                match.GameDate = dateTimeCreateMatch.Value.Date + dateTimeCreateMatchTime.Value.TimeOfDay;
+                match.TypeOfEvent = textCreateMatchTypeOfEvent.Text;
+
+
+                db.Match.Add(match);
+
+                int a = db.SaveChanges();
+                if (a > 0)
+                {
+                    MessageBox.Show("You created a match");
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong");
+                }
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("You cannot creat same matches twice");
             }
+                
+
+
+           
             
         }
         // Zakładka 'Update match'
@@ -286,6 +303,11 @@ namespace Test.Models
         private void buttonUsersGetUsers_Click(object sender, EventArgs e)
         {
             GetUsers();
+        }
+
+        private void buttonUpdateGetMatchInfo_Click(object sender, EventArgs e)
+        {
+            GetMatch(Convert.ToInt16(numericUpdateMatchId.Value));
         }
     }
 }
