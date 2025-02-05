@@ -46,11 +46,11 @@
             this.buttonGetAvailableTickets = new System.Windows.Forms.Button();
             this.dataGridBuyAvailableTickets = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonUserGetMyTickets = new System.Windows.Forms.Button();
+            this.dataGridViewUserMyTickets = new System.Windows.Forms.DataGridView();
             this.labelUserId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonUserGetMyTickets = new System.Windows.Forms.Button();
-            this.dataGridViewUserMyTickets = new System.Windows.Forms.DataGridView();
             this.tabControlUser.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUpcomming)).BeginInit();
@@ -258,6 +258,24 @@
             this.tabPage3.Text = "My tickets";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // buttonUserGetMyTickets
+            // 
+            this.buttonUserGetMyTickets.Location = new System.Drawing.Point(28, 22);
+            this.buttonUserGetMyTickets.Name = "buttonUserGetMyTickets";
+            this.buttonUserGetMyTickets.Size = new System.Drawing.Size(123, 39);
+            this.buttonUserGetMyTickets.TabIndex = 5;
+            this.buttonUserGetMyTickets.Text = "Show my tickets";
+            this.buttonUserGetMyTickets.UseVisualStyleBackColor = true;
+            this.buttonUserGetMyTickets.Click += new System.EventHandler(this.buttonUserGetMyTickets_Click);
+            // 
+            // dataGridViewUserMyTickets
+            // 
+            this.dataGridViewUserMyTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUserMyTickets.Location = new System.Drawing.Point(28, 87);
+            this.dataGridViewUserMyTickets.Name = "dataGridViewUserMyTickets";
+            this.dataGridViewUserMyTickets.Size = new System.Drawing.Size(662, 258);
+            this.dataGridViewUserMyTickets.TabIndex = 4;
+            // 
             // labelUserId
             // 
             this.labelUserId.AutoSize = true;
@@ -276,24 +294,6 @@
             this.label1.Size = new System.Drawing.Size(151, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Your user id is";
-            // 
-            // buttonUserGetMyTickets
-            // 
-            this.buttonUserGetMyTickets.Location = new System.Drawing.Point(28, 22);
-            this.buttonUserGetMyTickets.Name = "buttonUserGetMyTickets";
-            this.buttonUserGetMyTickets.Size = new System.Drawing.Size(123, 39);
-            this.buttonUserGetMyTickets.TabIndex = 5;
-            this.buttonUserGetMyTickets.Text = "Show my tickets";
-            this.buttonUserGetMyTickets.UseVisualStyleBackColor = true;
-            this.buttonUserGetMyTickets.Click += new System.EventHandler(this.buttonUserGetMyTickets_Click);
-            // 
-            // dataGridViewUserMyTickets
-            // 
-            this.dataGridViewUserMyTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserMyTickets.Location = new System.Drawing.Point(28, 87);
-            this.dataGridViewUserMyTickets.Name = "dataGridViewUserMyTickets";
-            this.dataGridViewUserMyTickets.Size = new System.Drawing.Size(662, 258);
-            this.dataGridViewUserMyTickets.TabIndex = 4;
             // 
             // UserWindow
             // 

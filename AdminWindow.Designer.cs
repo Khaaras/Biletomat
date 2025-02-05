@@ -68,8 +68,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabUsers = new System.Windows.Forms.TabPage();
-            this.buttonUsersGetUsers = new System.Windows.Forms.Button();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.buttonUsersGetUsers = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatch)).BeginInit();
@@ -187,7 +187,7 @@
             // 
             // buttonTicketsCreate
             // 
-            this.buttonTicketsCreate.Location = new System.Drawing.Point(606, 36);
+            this.buttonTicketsCreate.Location = new System.Drawing.Point(622, 36);
             this.buttonTicketsCreate.Name = "buttonTicketsCreate";
             this.buttonTicketsCreate.Size = new System.Drawing.Size(142, 46);
             this.buttonTicketsCreate.TabIndex = 12;
@@ -209,7 +209,7 @@
             // 
             // buttonTicketsGetMatchInfo
             // 
-            this.buttonTicketsGetMatchInfo.Location = new System.Drawing.Point(174, 36);
+            this.buttonTicketsGetMatchInfo.Location = new System.Drawing.Point(177, 36);
             this.buttonTicketsGetMatchInfo.Name = "buttonTicketsGetMatchInfo";
             this.buttonTicketsGetMatchInfo.Size = new System.Drawing.Size(142, 46);
             this.buttonTicketsGetMatchInfo.TabIndex = 7;
@@ -506,6 +506,14 @@
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewUsers
+            // 
+            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsers.Location = new System.Drawing.Point(83, 90);
+            this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.Size = new System.Drawing.Size(687, 269);
+            this.dataGridViewUsers.TabIndex = 1;
+            // 
             // buttonUsersGetUsers
             // 
             this.buttonUsersGetUsers.Location = new System.Drawing.Point(83, 32);
@@ -515,14 +523,6 @@
             this.buttonUsersGetUsers.Text = "Get users";
             this.buttonUsersGetUsers.UseVisualStyleBackColor = true;
             this.buttonUsersGetUsers.Click += new System.EventHandler(this.buttonUsersGetUsers_Click);
-            // 
-            // dataGridViewUsers
-            // 
-            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsers.Location = new System.Drawing.Point(83, 90);
-            this.dataGridViewUsers.Name = "dataGridViewUsers";
-            this.dataGridViewUsers.Size = new System.Drawing.Size(687, 269);
-            this.dataGridViewUsers.TabIndex = 1;
             // 
             // AdminWindow
             // 

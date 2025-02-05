@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
@@ -11,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Test.Models
 {
@@ -20,8 +22,8 @@ namespace Test.Models
         Match match = new Match();
         Tickets tickets = new Tickets();
 
-        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Test.Models.DataBaseContext;Integrated Security=True;Connect Timeout=30";
-
+        //string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Test.Models.DataBaseContext;Integrated Security=True;Connect Timeout=30";
+        string connectionString = ConfigurationManager.ConnectionStrings["BiletyContext"].ToString();
 
 
         public AdminWindow()
@@ -191,29 +193,34 @@ namespace Test.Models
             List<Tickets> tickets2 = db.Tickets.ToList();
 
 
+            
+                int maxNumberOfticketForMatch = tickets2.Where(c => c.MatchId == matchId).Select(d => d.TicketNumber).DefaultIfEmpty(0).Max();
 
+                for (int i = 1; i <= Convert.ToInt16(numericTicketsMatchNumberOfTickets.Value); i++)
+                {
+                    tickets.IsSold = false;
+                    tickets.MatchId = matchId;
+                    tickets.TicketNumber = Convert.ToInt16(maxNumberOfticketForMatch) + i;
+                    tickets.FullName = "";
+                    tickets.UserId = null;
+
+
+                    db.Tickets.Add(tickets);
+
+                    int a = db.SaveChanges();
+                    if (a > 0)
+                    {
+                        MessageBox.Show("You created a ticket");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong");
+                    }
+                }
+            
             
 
-            int maxNumberOfticketForMatch = tickets2.Where(c => c.MatchId == matchId).Select(d => d.TicketNumber).DefaultIfEmpty(0).Max();
-
-            for (int i = 1; i <= Convert.ToInt16(numericTicketsMatchNumberOfTickets.Value); i++)
-            {
-                tickets.IsSold = false;
-                tickets.MatchId = matchId;
-                tickets.TicketNumber = Convert.ToInt16(maxNumberOfticketForMatch)+i;
-
-                db.Tickets.Add(tickets);
-
-                int a = db.SaveChanges();
-                if (a > 0)
-                {
-                    MessageBox.Show("You created a ticket");
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong");
-                }
-            }
+            
             
 
 
