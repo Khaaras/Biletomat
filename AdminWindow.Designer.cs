@@ -68,6 +68,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabUsers = new System.Windows.Forms.TabPage();
+            this.dataGridViewUsersUserTicket = new System.Windows.Forms.DataGridView();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.buttonUsersGetUsers = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -81,6 +82,7 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).BeginInit();
             this.tabUsers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersUserTicket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +115,7 @@
             // checkBoxFutreMatches
             // 
             this.checkBoxFutreMatches.AutoSize = true;
-            this.checkBoxFutreMatches.Location = new System.Drawing.Point(273, 41);
+            this.checkBoxFutreMatches.Location = new System.Drawing.Point(170, 41);
             this.checkBoxFutreMatches.Name = "checkBoxFutreMatches";
             this.checkBoxFutreMatches.Size = new System.Drawing.Size(118, 17);
             this.checkBoxFutreMatches.TabIndex = 2;
@@ -122,9 +124,9 @@
             // 
             // buttonGetMatches
             // 
-            this.buttonGetMatches.Location = new System.Drawing.Point(166, 37);
+            this.buttonGetMatches.Location = new System.Drawing.Point(44, 30);
             this.buttonGetMatches.Name = "buttonGetMatches";
-            this.buttonGetMatches.Size = new System.Drawing.Size(75, 23);
+            this.buttonGetMatches.Size = new System.Drawing.Size(99, 37);
             this.buttonGetMatches.TabIndex = 1;
             this.buttonGetMatches.Text = "Get matches";
             this.buttonGetMatches.UseVisualStyleBackColor = true;
@@ -203,9 +205,19 @@
             0,
             0,
             0});
+            this.numericTicketsMatchNumberOfTickets.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericTicketsMatchNumberOfTickets.Name = "numericTicketsMatchNumberOfTickets";
             this.numericTicketsMatchNumberOfTickets.Size = new System.Drawing.Size(100, 20);
             this.numericTicketsMatchNumberOfTickets.TabIndex = 11;
+            this.numericTicketsMatchNumberOfTickets.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // buttonTicketsGetMatchInfo
             // 
@@ -498,6 +510,7 @@
             // 
             // tabUsers
             // 
+            this.tabUsers.Controls.Add(this.dataGridViewUsersUserTicket);
             this.tabUsers.Controls.Add(this.dataGridViewUsers);
             this.tabUsers.Controls.Add(this.buttonUsersGetUsers);
             this.tabUsers.Location = new System.Drawing.Point(4, 22);
@@ -507,17 +520,28 @@
             this.tabUsers.Text = "Users";
             this.tabUsers.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewUsersUserTicket
+            // 
+            this.dataGridViewUsersUserTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsersUserTicket.Location = new System.Drawing.Point(509, 118);
+            this.dataGridViewUsersUserTicket.Name = "dataGridViewUsersUserTicket";
+            this.dataGridViewUsersUserTicket.Size = new System.Drawing.Size(517, 269);
+            this.dataGridViewUsersUserTicket.TabIndex = 2;
+            // 
             // dataGridViewUsers
             // 
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsers.Location = new System.Drawing.Point(83, 90);
+            this.dataGridViewUsers.Location = new System.Drawing.Point(13, 118);
+            this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
-            this.dataGridViewUsers.Size = new System.Drawing.Size(687, 269);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(440, 269);
             this.dataGridViewUsers.TabIndex = 1;
+            this.dataGridViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellClick);
+            this.dataGridViewUsers.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewUsers_CellMouseClick);
             // 
             // buttonUsersGetUsers
             // 
-            this.buttonUsersGetUsers.Location = new System.Drawing.Point(83, 32);
+            this.buttonUsersGetUsers.Location = new System.Drawing.Point(13, 31);
             this.buttonUsersGetUsers.Name = "buttonUsersGetUsers";
             this.buttonUsersGetUsers.Size = new System.Drawing.Size(75, 23);
             this.buttonUsersGetUsers.TabIndex = 0;
@@ -548,6 +572,7 @@
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).EndInit();
             this.tabUsers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersUserTicket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
 
@@ -597,5 +622,6 @@
         private System.Windows.Forms.NumericUpDown numericTickersMatchId;
         private System.Windows.Forms.Button buttonUsersGetUsers;
         private System.Windows.Forms.DataGridView dataGridViewUsers;
+        private System.Windows.Forms.DataGridView dataGridViewUsersUserTicket;
     }
 }

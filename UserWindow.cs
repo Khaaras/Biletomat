@@ -213,6 +213,7 @@ namespace Test
         private void buttonBuyTicket_Click(object sender, EventArgs e)
         {
             BuyTicketForMatch(Convert.ToInt16(numericBuyMatchId.Value), Convert.ToInt16(numericBuyTicketNumber.Value));
+            GetAvailableTickets();
         }
 
         private void buttonUserGetMyTickets_Click(object sender, EventArgs e)

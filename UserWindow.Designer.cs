@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControlUser = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textUserFilterGuestTeam = new System.Windows.Forms.TextBox();
@@ -51,6 +52,10 @@
             this.labelUserId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStripBuyTickets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buyTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuMyTickets = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlUser.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUpcomming)).BeginInit();
@@ -60,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBuyAvailableTickets)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserMyTickets)).BeginInit();
+            this.contextMenuStripBuyTickets.SuspendLayout();
+            this.contextMenuMyTickets.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlUser
@@ -242,6 +249,7 @@
             // dataGridBuyAvailableTickets
             // 
             this.dataGridBuyAvailableTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBuyAvailableTickets.ContextMenuStrip = this.contextMenuStripBuyTickets;
             this.dataGridBuyAvailableTickets.Location = new System.Drawing.Point(17, 88);
             this.dataGridBuyAvailableTickets.Name = "dataGridBuyAvailableTickets";
             this.dataGridBuyAvailableTickets.Size = new System.Drawing.Size(662, 258);
@@ -295,6 +303,32 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Your user id is";
             // 
+            // contextMenuStripBuyTickets
+            // 
+            this.contextMenuStripBuyTickets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buyTicketToolStripMenuItem});
+            this.contextMenuStripBuyTickets.Name = "contextMenuStripBuyTickets";
+            this.contextMenuStripBuyTickets.Size = new System.Drawing.Size(127, 26);
+            // 
+            // buyTicketToolStripMenuItem
+            // 
+            this.buyTicketToolStripMenuItem.Name = "buyTicketToolStripMenuItem";
+            this.buyTicketToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.buyTicketToolStripMenuItem.Text = "Buy ticket";
+            // 
+            // contextMenuMyTickets
+            // 
+            this.contextMenuMyTickets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeTicketToolStripMenuItem});
+            this.contextMenuMyTickets.Name = "contextMenuMyTickets";
+            this.contextMenuMyTickets.Size = new System.Drawing.Size(150, 26);
+            // 
+            // removeTicketToolStripMenuItem
+            // 
+            this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
+            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.removeTicketToolStripMenuItem.Text = "Remove ticket";
+            // 
             // UserWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +350,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBuyAvailableTickets)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserMyTickets)).EndInit();
+            this.contextMenuStripBuyTickets.ResumeLayout(false);
+            this.contextMenuMyTickets.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +382,9 @@
         private System.Windows.Forms.Button buttonBuyTicket;
         private System.Windows.Forms.Button buttonUserGetMyTickets;
         private System.Windows.Forms.DataGridView dataGridViewUserMyTickets;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripBuyTickets;
+        private System.Windows.Forms.ToolStripMenuItem buyTicketToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuMyTickets;
+        private System.Windows.Forms.ToolStripMenuItem removeTicketToolStripMenuItem;
     }
 }

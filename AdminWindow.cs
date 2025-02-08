@@ -211,8 +211,10 @@ namespace Test.Models
 
 
             
-                int maxNumberOfticketForMatch = tickets2.Where(c => c.MatchId == matchId).Select(d => d.TicketNumber).DefaultIfEmpty(0).Max();
+            int maxNumberOfticketForMatch = tickets2.Where(c => c.MatchId == matchId).Select(d => d.TicketNumber).DefaultIfEmpty(0).Max();
 
+            try
+            {
                 for (int i = 1; i <= Convert.ToInt16(numericTicketsMatchNumberOfTickets.Value); i++)
                 {
                     tickets.IsSold = false;
@@ -234,6 +236,17 @@ namespace Test.Models
                         MessageBox.Show("Something went wrong");
                     }
                 }
+            }
+            catch (DbEntityValidationException eve)
+            {
+                foreach (var exe in eve.EntityValidationErrors)
+                {
+                    foreach (var ex in exe.ValidationErrors)
+                        MessageBox.Show(ex.ErrorMessage);
+                }      
+                throw;
+            }
+                
             
             
 
@@ -248,7 +261,7 @@ namespace Test.Models
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * from Users", conn))
+                using (SqlCommand cmd = new SqlCommand("Select id as 'User Number', FirstName, LastName from Users", conn))
                 {
                     cmd.CommandType = CommandType.Text;
                     conn.Open();
@@ -274,6 +287,34 @@ namespace Test.Models
             
         }
 
+        private void GetUserTickets(int userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select match.GameDate, match.HomeTeam, match.GuestTeam, uticket.TicketNumber from " +
+                    "UserTickets as uticket " +
+                    "Join Matches as match on uticket.MatchId = match.Id " +
+                    "where uticket.UserId = @userId"
+                    , conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    cmd.CommandType = CommandType.Text;
+                    conn.Open();
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            dataGridViewUsersUserTicket.DataSource = dt;
+
+                        }
+
+                    }
+                    conn.Close();
+                }
+            }
+        }
 
         // Zakładka 'Update match'
         private void buttonUpdateUpdate_Click(object sender, EventArgs e)
@@ -308,6 +349,28 @@ namespace Test.Models
         private void buttonUpdateGetMatchInfo_Click(object sender, EventArgs e)
         {
             GetMatch(Convert.ToInt16(numericUpdateMatchId.Value));
+        }
+
+       
+        
+        private void dataGridViewUsers_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridViewUsers.SelectedRows.Count > 0)
+            {
+                int selectedUserId = Convert.ToInt16(dataGridViewUsers.SelectedRows[0].Cells["User Number"].Value);
+                GetUserTickets(selectedUserId);
+            }
+        }
+
+        private void dataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //MessageBox.Show(dataGridViewUsers.SelectedRows[0].Cells["User Number"].Value.ToString());
+            //MessageBox.Show(dataGridViewUsers.CurrentCell.RowIndex.ToString());
+            int selectedUserId = Convert.ToInt16(dataGridViewUsers.Rows[dataGridViewUsers.CurrentCell.RowIndex].Cells["User Number"].Value.ToString());
+            GetUserTickets(selectedUserId);
+
+
         }
     }
 }
