@@ -37,51 +37,59 @@ namespace Test.Models
         {
             if (checkBoxFutreMatches.Checked == false)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    using (SqlCommand cmd = new SqlCommand("Select * from Matches", conn))
+                    var matches = db.Match
+                    .Select(m => new
                     {
-                        cmd.CommandType = CommandType.Text;
-                        conn.Open();
-                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                        {
-                            using (DataTable dt = new DataTable())
-                            {
-                                sda.Fill(dt);
-                                dataGridViewMatch.DataSource = dt;
+                        MatchNumber = m.Id,
+                        HomeTeam = m.HomeTeam,
+                        GuestTeam = m.GuestTeam,
+                        MatchDate = m.GameDate,
+                        TypeOfEvent = m.TypeOfEvent,
+                        TotalNumberOfTicketsForMatch = db.Tickets.Count(t => t.MatchId == m.Id),
+                        AvailableTickets = db.Tickets.Where(c => c.IsSold == false).Count(t => t.MatchId == m.Id)
 
-                            }
+                    });
 
-                        }
-                        conn.Close();
-                    }
-                }
+
+                dataGridViewMatch.DataSource = matches.ToList();
+
+                //dodanie własnych nazwy 
+
+                dataGridViewMatch.Columns["MatchNumber"].HeaderText = "Match Number";
+                dataGridViewMatch.Columns["HomeTeam"].HeaderText = "Home Team";
+                dataGridViewMatch.Columns["GuestTeam"].HeaderText = "Guest Team";
+                dataGridViewMatch.Columns["MatchDate"].HeaderText = "GameDate";
+                dataGridViewMatch.Columns["TypeOfEvent"].HeaderText = "Type of event";
+                dataGridViewMatch.Columns["TotalNumberOfTicketsForMatch"].HeaderText = "Total Number of tickets for this match";
+                dataGridViewMatch.Columns["AvailableTickets"].HeaderText = "Number of available tickets for this match";
             }
             else
             {
-                DateTime dateTime = DateTime.Now;
-                String stringDateTime = dateTime.ToString("dd-MM-yyyy HH:mm:ss");
+                DateTime dateTime = DateTime.Now;               
 
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    using (SqlCommand cmd = new SqlCommand("Select * from Matches Where (GameDate) >= (@Date)", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Date", dateTime);
-                        cmd.CommandType = CommandType.Text;
-                        conn.Open();
-                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                        {
-                            using (DataTable dt = new DataTable())
-                            {
-                                sda.Fill(dt);
-                                dataGridViewMatch.DataSource = dt;
+                var matches = db.Match
+                  .Where(m => m.GameDate > dateTime)  
+                  .Select(m => new
+                  {
+                      MatchNumber = m.Id,
+                      HomeTeam = m.HomeTeam,
+                      GuestTeam = m.GuestTeam,
+                      MatchDate = m.GameDate,
+                      TypeOfEvent = m.TypeOfEvent,
+                      TotalNumberOfTicketsForMatch = db.Tickets.Count(t => t.MatchId == m.Id),
+                      AvailableTickets = db.Tickets.Where(c => c.IsSold == false).Count(t => t.MatchId == m.Id)
+                  });
 
-                            }
 
-                        }
-                        conn.Close();
-                    }
-                }
+                dataGridViewMatch.DataSource = matches.ToList();
+
+                dataGridViewMatch.Columns["MatchNumber"].HeaderText = "Match Number";
+                dataGridViewMatch.Columns["HomeTeam"].HeaderText = "Home Team";
+                dataGridViewMatch.Columns["GuestTeam"].HeaderText = "Guest Team";
+                dataGridViewMatch.Columns["MatchDate"].HeaderText = "GameDate";
+                dataGridViewMatch.Columns["TypeOfEvent"].HeaderText = "Type of event";
+                dataGridViewMatch.Columns["TotalNumberOfTicketsForMatch"].HeaderText = "Total Number of tickets for this match";
+                dataGridViewMatch.Columns["AvailableTickets"].HeaderText = "Number of available tickets for this match";
             }
         }
 
@@ -181,27 +189,29 @@ namespace Test.Models
 
         // Zakładka 'Bilety'
         public void GetTicketsForMatch(int matchId)
-        {                      
-                using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            
+            var tickets = db.Tickets.Where(t => t.MatchId == matchId)
+                .Select(t => new
                 {
-                    using (SqlCommand cmd = new SqlCommand("Select * from Tickets Where (MatchId) >= (@matchId)", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@matchId", matchId);
-                        cmd.CommandType = CommandType.Text;
-                        conn.Open();
-                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                        {
-                            using (DataTable dt = new DataTable())
-                            {
-                                sda.Fill(dt);
-                                dataGridViewTickets.DataSource = dt;
+                    
+                    TicketNumber = t.TicketNumber,
+                    MatchId = t.MatchId,
+                    IsSold = t.IsSold,
+                    UserId = t.UserId,
+                    FullName = t.FullName
 
-                            }
+                }).ToList();
 
-                        }
-                        conn.Close();
-                    }
-                }                  
+            dataGridViewTickets.DataSource = tickets;
+
+            dataGridViewTickets.Columns["TicketNumber"].HeaderText = "Ticket number";
+            dataGridViewTickets.Columns["MatchId"].HeaderText = "Match number";
+            dataGridViewTickets.Columns["IsSold"].HeaderText = "Is ticket sold?";
+            dataGridViewTickets.Columns["UserId"].HeaderText = "User number";
+            dataGridViewTickets.Columns["FullName"].HeaderText = "User full name";
+            
+
         }
 
         // Zakładka 'Bielty'
@@ -245,75 +255,52 @@ namespace Test.Models
                         MessageBox.Show(ex.ErrorMessage);
                 }      
                 throw;
-            }
-                
-            
-            
-
-            
-            
-
-
+            }   
         }
 
         // Zadkładka 'Users'
         public void GetUsers()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+        {            
+            var getUsers = db.Users.Select(u => new
             {
-                using (SqlCommand cmd = new SqlCommand("Select id as 'User Number', FirstName, LastName from Users", conn))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridViewUsers.DataSource = dt;
-                        }
-                    }
-                    conn.Close();
-                }
-            }
-        }
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName
+            }).ToList();
+            dataGridViewUsers.DataSource = getUsers;
 
+            dataGridViewUsers.Columns["Id"].HeaderText = "User number";
+            dataGridViewUsers.Columns["FirstName"].HeaderText = "First name";
+            dataGridViewUsers.Columns["LastName"].HeaderText = "Last name";
+        }
+        
         // Zakładka 'Mecze'
         private void buttonGetMatches_Click(object sender, EventArgs e)
         {
-
-            GetMatches();        
-                       
-            
+            GetMatches();  
         }
 
         private void GetUserTickets(int userId)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("Select match.GameDate, match.HomeTeam, match.GuestTeam, uticket.TicketNumber from " +
-                    "UserTickets as uticket " +
-                    "Join Matches as match on uticket.MatchId = match.Id " +
-                    "where uticket.UserId = @userId"
-                    , conn))
-                {
-                    cmd.Parameters.AddWithValue("@userId", userId);
+           
+            var getUserTickets = (from u in db.UserTickets
+                                 join m in db.Match
+                                 on u.MatchId equals m.Id
+                                 where u.UserId == userId
+                                 select new
+                                 {
+                                     m.GameDate,
+                                     m.HomeTeam,
+                                     m.GuestTeam,
+                                     u.TicketNumber
+                                 }).ToList();
 
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridViewUsersUserTicket.DataSource = dt;
+            dataGridViewUsersUserTicket.DataSource = getUserTickets;
 
-                        }
-
-                    }
-                    conn.Close();
-                }
-            }
+            dataGridViewUsersUserTicket.Columns["GameDate"].HeaderText = "Game date";
+            dataGridViewUsersUserTicket.Columns["HomeTeam"].HeaderText = "Home team";
+            dataGridViewUsersUserTicket.Columns["GuestTeam"].HeaderText = "Guest team";
+            dataGridViewUsersUserTicket.Columns["TicketNumber"].HeaderText = "Ticket number";
         }
 
         // Zakładka 'Update match'
@@ -350,26 +337,20 @@ namespace Test.Models
         {
             GetMatch(Convert.ToInt16(numericUpdateMatchId.Value));
         }
-
-       
-        
+ 
         private void dataGridViewUsers_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (dataGridViewUsers.SelectedRows.Count > 0)
             {
-                int selectedUserId = Convert.ToInt16(dataGridViewUsers.SelectedRows[0].Cells["User Number"].Value);
+                int selectedUserId = Convert.ToInt16(dataGridViewUsers.SelectedRows[0].Cells["Id"].Value);
                 GetUserTickets(selectedUserId);
             }
         }
 
         private void dataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            //MessageBox.Show(dataGridViewUsers.SelectedRows[0].Cells["User Number"].Value.ToString());
-            //MessageBox.Show(dataGridViewUsers.CurrentCell.RowIndex.ToString());
-            int selectedUserId = Convert.ToInt16(dataGridViewUsers.Rows[dataGridViewUsers.CurrentCell.RowIndex].Cells["User Number"].Value.ToString());
+            int selectedUserId = Convert.ToInt16(dataGridViewUsers.Rows[dataGridViewUsers.CurrentCell.RowIndex].Cells["Id"].Value.ToString());
             GetUserTickets(selectedUserId);
-
 
         }
     }

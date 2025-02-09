@@ -137,7 +137,7 @@
             this.dataGridViewMatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMatch.Location = new System.Drawing.Point(44, 89);
             this.dataGridViewMatch.Name = "dataGridViewMatch";
-            this.dataGridViewMatch.Size = new System.Drawing.Size(687, 234);
+            this.dataGridViewMatch.Size = new System.Drawing.Size(844, 234);
             this.dataGridViewMatch.TabIndex = 0;
             // 
             // tabPage2
@@ -159,7 +159,7 @@
             // 
             // numericTickersMatchId
             // 
-            this.numericTickersMatchId.Location = new System.Drawing.Point(56, 62);
+            this.numericTickersMatchId.Location = new System.Drawing.Point(22, 101);
             this.numericTickersMatchId.Maximum = new decimal(new int[] {
             15,
             0,
@@ -182,16 +182,16 @@
             // dataGridViewTickets
             // 
             this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTickets.Location = new System.Drawing.Point(56, 132);
+            this.dataGridViewTickets.Location = new System.Drawing.Point(170, 17);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
-            this.dataGridViewTickets.Size = new System.Drawing.Size(840, 234);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(720, 234);
             this.dataGridViewTickets.TabIndex = 13;
             // 
             // buttonTicketsCreate
             // 
-            this.buttonTicketsCreate.Location = new System.Drawing.Point(622, 36);
+            this.buttonTicketsCreate.Location = new System.Drawing.Point(920, 17);
             this.buttonTicketsCreate.Name = "buttonTicketsCreate";
-            this.buttonTicketsCreate.Size = new System.Drawing.Size(142, 46);
+            this.buttonTicketsCreate.Size = new System.Drawing.Size(100, 46);
             this.buttonTicketsCreate.TabIndex = 12;
             this.buttonTicketsCreate.Text = "Create tickets for match";
             this.buttonTicketsCreate.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@
             // 
             // numericTicketsMatchNumberOfTickets
             // 
-            this.numericTicketsMatchNumberOfTickets.Location = new System.Drawing.Point(796, 62);
+            this.numericTicketsMatchNumberOfTickets.Location = new System.Drawing.Point(920, 101);
             this.numericTicketsMatchNumberOfTickets.Maximum = new decimal(new int[] {
             15,
             0,
@@ -221,9 +221,9 @@
             // 
             // buttonTicketsGetMatchInfo
             // 
-            this.buttonTicketsGetMatchInfo.Location = new System.Drawing.Point(177, 36);
+            this.buttonTicketsGetMatchInfo.Location = new System.Drawing.Point(19, 17);
             this.buttonTicketsGetMatchInfo.Name = "buttonTicketsGetMatchInfo";
-            this.buttonTicketsGetMatchInfo.Size = new System.Drawing.Size(142, 46);
+            this.buttonTicketsGetMatchInfo.Size = new System.Drawing.Size(100, 46);
             this.buttonTicketsGetMatchInfo.TabIndex = 7;
             this.buttonTicketsGetMatchInfo.Text = "Show tickets for match";
             this.buttonTicketsGetMatchInfo.UseVisualStyleBackColor = true;
@@ -231,21 +231,21 @@
             // 
             // label
             // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(793, 36);
+            this.label.Location = new System.Drawing.Point(917, 85);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(90, 13);
+            this.label.Size = new System.Drawing.Size(100, 13);
             this.label.TabIndex = 6;
             this.label.Text = "Number of tickets";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 36);
+            this.label8.Location = new System.Drawing.Point(19, 85);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 13);
+            this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Match number";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage3
             // 
@@ -562,7 +562,6 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatch)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericTickersMatchId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericTicketsMatchNumberOfTickets)).EndInit();

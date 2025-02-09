@@ -43,89 +43,59 @@ namespace Test
         private void GetUpcommingMatches()
         {
             DateTime dateTimeNow = DateTime.Now;
+            
+            var upcommingMatches = db.Match.Where(m => m.GameDate > dateTimeNow).ToList();
+            dataGridViewUpcomming.DataSource = upcommingMatches;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("Select * from Matches where (GameDate) >= (@Date)", conn))
-                {
-                    cmd.Parameters.AddWithValue("@Date", dateTimeNow);
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridViewUpcomming.DataSource = dt;
-
-                        }
-
-                    }
-                    conn.Close();
-                }
-            }
+            dataGridViewUpcomming.Columns["Id"].HeaderText = "Match number";
+            dataGridViewUpcomming.Columns["HomeTeam"].HeaderText = "Home team";
+            dataGridViewUpcomming.Columns["GuestTeam"].HeaderText = "Guest team";
+            dataGridViewUpcomming.Columns["GameDate"].HeaderText = "Date";
+            dataGridViewUpcomming.Columns["TypeOfEvent"].HeaderText = "Type of event";
         }
 
         // 
         public void GetMatchBasedOnFilters(string homeTeam, string guestTeam)
         {
             DateTime dateTimeNow = DateTime.Now;
+           
+            var getMatchBassedOnFilters = db.Match.Where(m => m.GameDate > dateTimeNow)
+                .Where(t => t.HomeTeam.Contains(homeTeam))
+                .Where(c => c.GuestTeam.Contains(guestTeam))
+                .ToList();
+            dataGridViewUpcomming.DataSource = getMatchBassedOnFilters;
 
-            //dataGridViewUpcomming.DataSource = null;
-            //dataGridViewUpcomming.Rows.Clear();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("Select * from Matches " +
-                    "where (GameDate) >= (@Date) and (HomeTeam) like @HomeTeam and (GuestTeam) like @GuestTeam", conn))
-                {
-                    cmd.Parameters.AddWithValue("@Date",  dateTimeNow);
-                    cmd.Parameters.AddWithValue("@HomeTeam", "%" + homeTeam + "%");
-                    cmd.Parameters.AddWithValue("@GuestTeam", "%" + guestTeam + "%");
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridViewUpcomming.DataSource = dt;
-
-                        }
-
-                    }
-                    conn.Close();
-                }
-            }
+            dataGridViewUpcomming.Columns["Id"].HeaderText = "Match number";
+            dataGridViewUpcomming.Columns["HomeTeam"].HeaderText = "Home team";
+            dataGridViewUpcomming.Columns["GuestTeam"].HeaderText = "Guest team";
+            dataGridViewUpcomming.Columns["GameDate"].HeaderText = "Date";
+            dataGridViewUpcomming.Columns["TypeOfEvent"].HeaderText = "Type of event";
         }
 
         private void GetAvailableTickets()
         {
             DateTime dateTimeNow = DateTime.Now;
+                       
+            var getAvailableTickets = (from m in db.Match
+                                       join t in db.Tickets
+                                       on m.Id equals t.MatchId
+                                       where t.IsSold == false
+                                       select new
+                                       {
+                                           m.Id,
+                                           m.HomeTeam,
+                                           m.GuestTeam,
+                                           m.GameDate,
+                                           t.TicketNumber
 
-            
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("Select match.HomeTeam, match.GuestTeam, match.GameDate, match.Id 'Match number' ,ticket.TicketNumber from Matches as match " +
-                    "join Tickets as ticket on match.Id = ticket.MatchId where ticket.IsSold = 0" 
-                    , conn))
-                {
-                    cmd.Parameters.AddWithValue("@Date", dateTimeNow);
-                    
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridBuyAvailableTickets.DataSource = dt;
+                                       }).ToList();
+            dataGridBuyAvailableTickets.DataSource = getAvailableTickets;
 
-                        }
-
-                    }
-                    conn.Close();
-                }
-            }
+            dataGridBuyAvailableTickets.Columns["Id"].HeaderText = "Match number";
+            dataGridBuyAvailableTickets.Columns["HomeTeam"].HeaderText = "Home team";
+            dataGridBuyAvailableTickets.Columns["GuestTeam"].HeaderText = "Guest team";
+            dataGridBuyAvailableTickets.Columns["GameDate"].HeaderText = "Date";
+            dataGridBuyAvailableTickets.Columns["TicketNumber"].HeaderText = "Ticket number";
         }
 
         private void BuyTicketForMatch(int matchId, int ticketNumber)
@@ -166,31 +136,25 @@ namespace Test
 
         private void GetMyTickets()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("Select match.GameDate, match.HomeTeam, match.GuestTeam, uticket.TicketNumber from " +
-                    "UserTickets as uticket " +
-                    "Join Matches as match on uticket.MatchId = match.Id " +
-                    "where uticket.UserId = @userId"
-                    , conn))
-                {
-                    cmd.Parameters.AddWithValue("@userId", Convert.ToInt16(Login.instance.userId));
+            
+            var getMyTickets = (from u in db.UserTickets
+                                join m in db.Match
+                                on u.MatchId equals m.Id
+                                where u.UserId == loggedUserId
+                                select new
+                                {
+                                    m.GameDate,
+                                    m.HomeTeam,
+                                    m.GuestTeam,
+                                    u.TicketNumber
+                                }).ToList();
 
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            dataGridViewUserMyTickets.DataSource = dt;
+            dataGridViewUserMyTickets.DataSource = getMyTickets;
 
-                        }
-
-                    }
-                    conn.Close();
-                }
-            }
+            dataGridViewUserMyTickets.Columns["GameDate"].HeaderText = "Game date";
+            dataGridViewUserMyTickets.Columns["HomeTeam"].HeaderText = "Home team";
+            dataGridViewUserMyTickets.Columns["GuestTeam"].HeaderText = "Guest team";
+            dataGridViewUserMyTickets.Columns["TicketNumber"].HeaderText = "Ticket number";
         }
         // zakładka 'Users'
         private void buttonUpcomming_Click(object sender, EventArgs e)
