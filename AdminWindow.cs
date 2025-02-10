@@ -347,5 +347,15 @@ namespace Test.Models
             GetUserTickets(selectedUserId);
 
         }
+
+        private void buttonUpdateGetMatchInfo_Click_1(object sender, EventArgs e)
+        {
+            GetMatch(Convert.ToInt16(numericUpdateMatchId.Value));
+        }
+
+        private void buttonUpdateUpdate_Click_1(object sender, EventArgs e)
+        {
+            UpdateMatch(Convert.ToInt16(numericUpdateMatchId.Value));
+        }
     }
 }
