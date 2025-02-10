@@ -53,24 +53,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabUsers = new System.Windows.Forms.TabPage();
+            this.dataGridViewUsersUserTicket = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.buttonUsersGetUsers = new System.Windows.Forms.Button();
             this.numericUpdateMatchId = new System.Windows.Forms.NumericUpDown();
             this.textUpdateTypeOfEvent = new System.Windows.Forms.TextBox();
+            this.textUpdateGuestTeam = new System.Windows.Forms.TextBox();
+            this.textUpdateHomeTeam = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dateUpdateTime = new System.Windows.Forms.DateTimePicker();
             this.dateUpdateDate = new System.Windows.Forms.DateTimePicker();
-            this.textUpdateGuestTeam = new System.Windows.Forms.TextBox();
-            this.textUpdateHomeTeam = new System.Windows.Forms.TextBox();
             this.buttonUpdateUpdate = new System.Windows.Forms.Button();
             this.buttonUpdateGetMatchInfo = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.tabUsers = new System.Windows.Forms.TabPage();
-            this.dataGridViewUsersUserTicket = new System.Windows.Forms.DataGridView();
-            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.buttonUsersGetUsers = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatch)).BeginInit();
@@ -79,11 +78,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericTicketsMatchNumberOfTickets)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).BeginInit();
             this.tabUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersUserTicket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -91,7 +89,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabUsers);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -249,6 +246,19 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.numericUpdateMatchId);
+            this.tabPage3.Controls.Add(this.textUpdateTypeOfEvent);
+            this.tabPage3.Controls.Add(this.textUpdateGuestTeam);
+            this.tabPage3.Controls.Add(this.textUpdateHomeTeam);
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.dateUpdateTime);
+            this.tabPage3.Controls.Add(this.dateUpdateDate);
+            this.tabPage3.Controls.Add(this.buttonUpdateUpdate);
+            this.tabPage3.Controls.Add(this.buttonUpdateGetMatchInfo);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.dateTimeCreateMatchTime);
             this.tabPage3.Controls.Add(this.buttonCreateMatchBack);
             this.tabPage3.Controls.Add(this.buttonCreateMatchCreate);
@@ -264,7 +274,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1044, 400);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Plan a match";
+            this.tabPage3.Text = "Create/Update a match";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // dateTimeCreateMatchTime
@@ -362,152 +372,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Home team";
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.numericUpdateMatchId);
-            this.tabPage5.Controls.Add(this.textUpdateTypeOfEvent);
-            this.tabPage5.Controls.Add(this.label12);
-            this.tabPage5.Controls.Add(this.dateUpdateTime);
-            this.tabPage5.Controls.Add(this.dateUpdateDate);
-            this.tabPage5.Controls.Add(this.textUpdateGuestTeam);
-            this.tabPage5.Controls.Add(this.textUpdateHomeTeam);
-            this.tabPage5.Controls.Add(this.buttonUpdateUpdate);
-            this.tabPage5.Controls.Add(this.buttonUpdateGetMatchInfo);
-            this.tabPage5.Controls.Add(this.label7);
-            this.tabPage5.Controls.Add(this.label9);
-            this.tabPage5.Controls.Add(this.label10);
-            this.tabPage5.Controls.Add(this.label11);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1044, 400);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Update match";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // numericUpdateMatchId
-            // 
-            this.numericUpdateMatchId.Location = new System.Drawing.Point(47, 53);
-            this.numericUpdateMatchId.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.numericUpdateMatchId.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpdateMatchId.Name = "numericUpdateMatchId";
-            this.numericUpdateMatchId.Size = new System.Drawing.Size(100, 20);
-            this.numericUpdateMatchId.TabIndex = 43;
-            this.numericUpdateMatchId.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // textUpdateTypeOfEvent
-            // 
-            this.textUpdateTypeOfEvent.Location = new System.Drawing.Point(230, 320);
-            this.textUpdateTypeOfEvent.Name = "textUpdateTypeOfEvent";
-            this.textUpdateTypeOfEvent.Size = new System.Drawing.Size(100, 20);
-            this.textUpdateTypeOfEvent.TabIndex = 42;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(44, 327);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 41;
-            this.label12.Text = "Type of event";
-            // 
-            // dateUpdateTime
-            // 
-            this.dateUpdateTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateUpdateTime.Location = new System.Drawing.Point(230, 220);
-            this.dateUpdateTime.Name = "dateUpdateTime";
-            this.dateUpdateTime.Size = new System.Drawing.Size(100, 20);
-            this.dateUpdateTime.TabIndex = 40;
-            // 
-            // dateUpdateDate
-            // 
-            this.dateUpdateDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateUpdateDate.Location = new System.Drawing.Point(230, 194);
-            this.dateUpdateDate.Name = "dateUpdateDate";
-            this.dateUpdateDate.Size = new System.Drawing.Size(100, 20);
-            this.dateUpdateDate.TabIndex = 39;
-            // 
-            // textUpdateGuestTeam
-            // 
-            this.textUpdateGuestTeam.Location = new System.Drawing.Point(230, 147);
-            this.textUpdateGuestTeam.Name = "textUpdateGuestTeam";
-            this.textUpdateGuestTeam.Size = new System.Drawing.Size(100, 20);
-            this.textUpdateGuestTeam.TabIndex = 37;
-            // 
-            // textUpdateHomeTeam
-            // 
-            this.textUpdateHomeTeam.Location = new System.Drawing.Point(230, 98);
-            this.textUpdateHomeTeam.Name = "textUpdateHomeTeam";
-            this.textUpdateHomeTeam.Size = new System.Drawing.Size(100, 20);
-            this.textUpdateHomeTeam.TabIndex = 36;
-            // 
-            // buttonUpdateUpdate
-            // 
-            this.buttonUpdateUpdate.Location = new System.Drawing.Point(210, 357);
-            this.buttonUpdateUpdate.Name = "buttonUpdateUpdate";
-            this.buttonUpdateUpdate.Size = new System.Drawing.Size(142, 23);
-            this.buttonUpdateUpdate.TabIndex = 35;
-            this.buttonUpdateUpdate.Text = "Update match information";
-            this.buttonUpdateUpdate.UseVisualStyleBackColor = true;
-            this.buttonUpdateUpdate.Click += new System.EventHandler(this.buttonUpdateUpdate_Click);
-            // 
-            // buttonUpdateGetMatchInfo
-            // 
-            this.buttonUpdateGetMatchInfo.Location = new System.Drawing.Point(210, 50);
-            this.buttonUpdateGetMatchInfo.Name = "buttonUpdateGetMatchInfo";
-            this.buttonUpdateGetMatchInfo.Size = new System.Drawing.Size(142, 23);
-            this.buttonUpdateGetMatchInfo.TabIndex = 34;
-            this.buttonUpdateGetMatchInfo.Text = "Get match information";
-            this.buttonUpdateGetMatchInfo.UseVisualStyleBackColor = true;
-            this.buttonUpdateGetMatchInfo.Click += new System.EventHandler(this.buttonUpdateGetMatchInfo_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(44, 202);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 13);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Date";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 37);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(75, 13);
-            this.label9.TabIndex = 31;
-            this.label9.Text = "Match number";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(44, 154);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 13);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "Guest team";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(44, 105);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 13);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "Home team";
-            // 
             // tabUsers
             // 
             this.tabUsers.Controls.Add(this.dataGridViewUsersUserTicket);
@@ -549,6 +413,128 @@
             this.buttonUsersGetUsers.UseVisualStyleBackColor = true;
             this.buttonUsersGetUsers.Click += new System.EventHandler(this.buttonUsersGetUsers_Click);
             // 
+            // numericUpdateMatchId
+            // 
+            this.numericUpdateMatchId.Location = new System.Drawing.Point(617, 50);
+            this.numericUpdateMatchId.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpdateMatchId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpdateMatchId.Name = "numericUpdateMatchId";
+            this.numericUpdateMatchId.Size = new System.Drawing.Size(100, 20);
+            this.numericUpdateMatchId.TabIndex = 56;
+            this.numericUpdateMatchId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // textUpdateTypeOfEvent
+            // 
+            this.textUpdateTypeOfEvent.Location = new System.Drawing.Point(800, 317);
+            this.textUpdateTypeOfEvent.Name = "textUpdateTypeOfEvent";
+            this.textUpdateTypeOfEvent.Size = new System.Drawing.Size(100, 20);
+            this.textUpdateTypeOfEvent.TabIndex = 55;
+            // 
+            // textUpdateGuestTeam
+            // 
+            this.textUpdateGuestTeam.Location = new System.Drawing.Point(800, 144);
+            this.textUpdateGuestTeam.Name = "textUpdateGuestTeam";
+            this.textUpdateGuestTeam.Size = new System.Drawing.Size(100, 20);
+            this.textUpdateGuestTeam.TabIndex = 51;
+            // 
+            // textUpdateHomeTeam
+            // 
+            this.textUpdateHomeTeam.Location = new System.Drawing.Point(800, 95);
+            this.textUpdateHomeTeam.Name = "textUpdateHomeTeam";
+            this.textUpdateHomeTeam.Size = new System.Drawing.Size(100, 20);
+            this.textUpdateHomeTeam.TabIndex = 50;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(614, 324);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 54;
+            this.label12.Text = "Type of event";
+            // 
+            // dateUpdateTime
+            // 
+            this.dateUpdateTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateUpdateTime.Location = new System.Drawing.Point(800, 217);
+            this.dateUpdateTime.Name = "dateUpdateTime";
+            this.dateUpdateTime.Size = new System.Drawing.Size(100, 20);
+            this.dateUpdateTime.TabIndex = 53;
+            // 
+            // dateUpdateDate
+            // 
+            this.dateUpdateDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateUpdateDate.Location = new System.Drawing.Point(800, 191);
+            this.dateUpdateDate.Name = "dateUpdateDate";
+            this.dateUpdateDate.Size = new System.Drawing.Size(100, 20);
+            this.dateUpdateDate.TabIndex = 52;
+            // 
+            // buttonUpdateUpdate
+            // 
+            this.buttonUpdateUpdate.Location = new System.Drawing.Point(780, 354);
+            this.buttonUpdateUpdate.Name = "buttonUpdateUpdate";
+            this.buttonUpdateUpdate.Size = new System.Drawing.Size(142, 23);
+            this.buttonUpdateUpdate.TabIndex = 49;
+            this.buttonUpdateUpdate.Text = "Update match information";
+            this.buttonUpdateUpdate.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateGetMatchInfo
+            // 
+            this.buttonUpdateGetMatchInfo.Location = new System.Drawing.Point(780, 47);
+            this.buttonUpdateGetMatchInfo.Name = "buttonUpdateGetMatchInfo";
+            this.buttonUpdateGetMatchInfo.Size = new System.Drawing.Size(142, 23);
+            this.buttonUpdateGetMatchInfo.TabIndex = 48;
+            this.buttonUpdateGetMatchInfo.Text = "Get match information";
+            this.buttonUpdateGetMatchInfo.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(614, 199);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 47;
+            this.label7.Text = "Date";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(614, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 13);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Match number";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(614, 151);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 13);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "Guest team";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(614, 102);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Home team";
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,12 +553,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericTicketsMatchNumberOfTickets)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).EndInit();
             this.tabUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsersUserTicket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpdateMatchId)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -584,7 +568,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabUsers;
-        private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -601,26 +584,26 @@
         private System.Windows.Forms.Button buttonGetMatches;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonTicketsGetMatchInfo;
-        private System.Windows.Forms.DateTimePicker dateUpdateTime;
-        private System.Windows.Forms.DateTimePicker dateUpdateDate;
+        private System.Windows.Forms.Button buttonTicketsCreate;
+        private System.Windows.Forms.NumericUpDown numericTicketsMatchNumberOfTickets;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.DataGridView dataGridViewTickets;
+        private System.Windows.Forms.NumericUpDown numericTickersMatchId;
+        private System.Windows.Forms.Button buttonUsersGetUsers;
+        private System.Windows.Forms.DataGridView dataGridViewUsers;
+        private System.Windows.Forms.DataGridView dataGridViewUsersUserTicket;
+        private System.Windows.Forms.NumericUpDown numericUpdateMatchId;
+        private System.Windows.Forms.TextBox textUpdateTypeOfEvent;
         private System.Windows.Forms.TextBox textUpdateGuestTeam;
         private System.Windows.Forms.TextBox textUpdateHomeTeam;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dateUpdateTime;
+        private System.Windows.Forms.DateTimePicker dateUpdateDate;
         private System.Windows.Forms.Button buttonUpdateUpdate;
         private System.Windows.Forms.Button buttonUpdateGetMatchInfo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textUpdateTypeOfEvent;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button buttonTicketsCreate;
-        private System.Windows.Forms.NumericUpDown numericTicketsMatchNumberOfTickets;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.DataGridView dataGridViewTickets;
-        private System.Windows.Forms.NumericUpDown numericUpdateMatchId;
-        private System.Windows.Forms.NumericUpDown numericTickersMatchId;
-        private System.Windows.Forms.Button buttonUsersGetUsers;
-        private System.Windows.Forms.DataGridView dataGridViewUsers;
-        private System.Windows.Forms.DataGridView dataGridViewUsersUserTicket;
     }
 }

@@ -22,10 +22,6 @@ namespace Test.Models
         Match match = new Match();
         Tickets tickets = new Tickets();
 
-        //string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Test.Models.DataBaseContext;Integrated Security=True;Connect Timeout=30";
-        string connectionString = ConfigurationManager.ConnectionStrings["BiletyContext"].ToString();
-
-
         public AdminWindow()
         {
             InitializeComponent();
@@ -153,9 +149,7 @@ namespace Test.Models
             
           
         }
-
         
-
         // Zakładka 'Update match'
         public void UpdateMatch(int matchId)
         {

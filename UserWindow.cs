@@ -19,7 +19,6 @@ namespace Test
         Tickets tickets = new Tickets();
         Users users = new Users();
         UserTickets userTickets = new UserTickets();
-        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Test.Models.DataBaseContext;Integrated Security=True;Connect Timeout=30";
         int loggedUserId;
         string loggedUserFullName;
 
